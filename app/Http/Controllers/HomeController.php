@@ -17,13 +17,11 @@ class HomeController extends Controller
             {
                 return view('user.home');
             }
-
             else
             {
                 return view('admin.home');
             }
-        }
-        
+        }   
         else
         {
             return redirect()-back();
@@ -31,6 +29,8 @@ class HomeController extends Controller
     }
 
 
+
+    
     public function index()
     {
         return view('user.home');
