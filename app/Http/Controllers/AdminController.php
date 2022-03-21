@@ -19,7 +19,9 @@ class AdminController extends Controller
             'number'=>'required',
             'room'=>'required',
             'speciality'=>'required',
-            'image'=>['required','mimes:png'] ,
+            'image'=>['required','mimes:jpg,png,jpeg']
+
+            // 'image'=>['required','mimes:png'] ,
             // 'image'=>'required|mimes:image' ,
 
         ]) ;
@@ -29,10 +31,10 @@ class AdminController extends Controller
             'mobile'=>$request->number,
             'room'=>$request->room,
             'speciality'=>$request->speciality,
-            'image'=>$request->image->store('doctors'),
-
-
+            'image'=>$request->image->store('doctors')
         ]);
+
+        return redirect()->back()->with('message','Doctor data added successfully');
 
     }
 

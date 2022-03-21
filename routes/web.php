@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/home',[HomeController::class,'redirect']);
-Route::get('/',[HomeController::class,'index']);
+Route::get('/home',[HomeController::class,'redirect'])->name('redirect');
+Route::get('/',[HomeController::class,'index'])->name('index');
 Route::get('/add_doctor',[AdminController::class,'addview'])->name('add_doctor');
-Route::post('/store',[AdminController::class,'upload'])->name('upload');
+Route::post('/upload',[AdminController::class,'upload'])->name('upload');
 
 
 

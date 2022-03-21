@@ -15,16 +15,32 @@
 
 <div class="container-fluid page-body-wrapper">
          <div class="mt-5 pt-5">
+
          @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
+            <div class="alert alert-danger">
+                <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
-        </ul>
-    </div>
-@endif
+                </ul>
+            </div>
+        @endif
+
+
+
             <div class="container">
+                
+            @if(session()->has('message'))
+
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismis="alert">
+                    x
+                </button>
+            {{session()->get('message')}}
+            </div>
+
+            @endif
+
 
                 <form action="{{route('upload')}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -66,6 +82,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
 
                 </form>
+
 
             </div>
 
