@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appoinment;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,31 @@ class HomeController extends Controller
     {
         $doctor=Doctor::all();
         return view('user.home',compact('doctor'));
+    }
+
+    public function appointment(Request $request)
+    {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'date'=>'required',
+            'doctor'=>'required',
+            'number'=>'required',
+            'message'=>'required'    
+        ]);
+
+        Appoinment::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'date'=>$request->date,
+            'doctor'=>$request->doctor,
+            'number'=>$request->number,
+            'message'=>$request->message,
+            'status'=>'In Progress',
+            'user_id'=>Auth::user()?Auth::user()->id:null
+        ]);
+
+        return redirect()->back()->with('message','Appointment request has been received');
     }
 
 

@@ -85,14 +85,11 @@
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
 
+
             @if(Route::has('login'))
-
             @auth 
-
             <x-app-layout>
-
             </x-app-layout>
-
             @else
 
             <li class="nav-item">
@@ -112,6 +109,13 @@
       </div> <!-- .container -->
     </nav>
   </header>
+
+<div class=> 
+  @if(session()->has('message'))
+    {{session()->get('message')}}
+  @endif
+</div>
+  
 
   <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);">
     <div class="hero-section">
@@ -182,7 +186,7 @@
   @include('user.latest')
 
   <!-- for make an appoinment  -->
-  @include('user.appoinment')
+  @include('user.appointment')
 
  
 

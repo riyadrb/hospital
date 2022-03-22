@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<style type="text/css">
+    <style type="text/css">
       label
-      {
-        display: inline-block;
-        width: 100px;
-      }
-    </style>
-    
+        {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>   
 </head>
+<body>
 
 
-
-<div class="container-fluid page-body-wrapper">
+    <div class="container-fluid page-body-wrapper">
          <div class="mt-5 pt-5">
 
          @if ($errors->any())
@@ -66,10 +66,10 @@
                         <label>Speciality :</label>
                         <select name="speciality" style="color:black ; width: 200px " >
                             <option value="">--select--</option>
-                            <option value="skin">Skin</option>
-                            <option value="heart">Heart</option>
-                            <option value="eye">Eye</option>
-                            <option value="dentist">Dentist</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Dental">Dental</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="Orthopaedics">Orthopaedics</option>
                         </select>
                     </div>
                     <br>
@@ -82,13 +82,9 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
 
                 </form>
-
-
             </div>
-
          </div>
-</div>
-<body>
+    </div>
     
 </body>
 </html>
