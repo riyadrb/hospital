@@ -47,7 +47,6 @@ class HomeController extends Controller
             'number'=>'required',
             'message'=>'required'    
         ]);
-
         Appoinment::create([
             'name'=>$request->name,
             'email'=>$request->email,
@@ -58,8 +57,31 @@ class HomeController extends Controller
             'status'=>'In Progress',
             'user_id'=>Auth::user()?Auth::user()->id:null
         ]);
-
         return redirect()->back()->with('message','Appointment request has been received');
+    }
+
+
+    public function my_appointment()
+    {
+        if(Auth::id())
+        {
+            $userid = Auth::user()->id;
+            $appoint=Appoinment::where('user_id',$userid)->get();
+            return view('user.my_appointment',compact('appoint'));
+        }
+        else
+        {
+            return redirect()->back();
+        }
+    }
+
+    public function cancel($id)
+    {
+        $data=Appoinment::find($id);
+        $data->delete();
+
+        return redirect()->back();
+
     }
 
 

@@ -38,4 +38,9 @@ class AdminController extends Controller
 
     }
 
+    public function show_appointment()
+    {
+        return view('admin.showappoint');
+    }
+
 }
