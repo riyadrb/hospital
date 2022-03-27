@@ -15,6 +15,12 @@ Route::post('/appointment',[HomeController::class,'appointment'])->name('appoint
 Route::get('/my_appointment',[HomeController::class,'my_appointment'])->name('my_appointment');
 Route::get('/cancel/{id}',[HomeController::class,'cancel'])->name('cancel');
 Route::get('/showappoint',[AdminController::class,'show_appointment'])->name('showappoint');
+Route::get('/approved/{id}',[AdminController::class,'approve'])->name('approved');
+Route::get('/canceled/{id}',[AdminController::class,'canceled'])->name('canceled');
+Route::get('/show_doctor',[AdminController::class,'show_doctor'])->name('show_doctor');
+Route::get('/del_doctor/{id}',[AdminController::class,'del_doctor'])->name('del_doctor');
+Route::get('/edit/{id}',[AdminController::class,'edit'])->name('edit');
+Route::post('/update/{id}',[AdminController::class,'update'])->name('update');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -3,6 +3,14 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+    <style type="text/css">
+        label
+          {
+              display: inline-block;
+              width: 100px;
+          }
+      </style>  
+    <base href="/public">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Corona Admin</title>
@@ -103,15 +111,14 @@
             <span class="nav-link">Navigation</span>
           </li>
           
-          
-          <!-- <li class="nav-item menu-items">
+          {{-- <li class="nav-item menu-items">
             <a class="nav-link" href="{{route('add_doctor')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
               <span class="menu-title">Add Doctor</span>
             </a>
-          </li> -->
+          </li> --}}
 
 
         </ul>
@@ -282,56 +289,53 @@
 
 
              <!-- content starts here  -->
+             <div class="container-fluid page-body-wrapper">
+                <div class="mt-5 pt-5">
 
+                    <div class="container">
 
-             <!-- @include('admin.doctors') -->
-    <div class="container-fluid page-body-wrapper">
-        <div class="mt-5 pt-5">
-            
-        <div style>
-            <table>
-                <tr style="background-color: white; color:black">
-                    <th style="padding: 10px;">Name </th>
-                    <th style="padding: 10px;">Email </th>
-                    <th style="padding: 10px;">Mobile </th>
-                    <th style="padding: 10px;">Doctor-Name</th>
-                    <th style="padding: 10px;">Date </th>
-                    <th style="padding: 10px;">Message </th>
-                    <th style="padding: 10px;">Status </th>
-                    <th style="padding: 10px;">Approve </th>
-                    <th style="padding: 10px;">Cancel </th>
-                </tr>
+                    <form action="{{route('update',$doct->id)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        {{-- @method(PUT) --}}
+    
+                        <div>
+                            <label for="">Doctor's Name :</label>
+                            <input type="text" name="name" style="color: black" value="{{$doct->name}}">
+                        </div>
+                        <br>
+                        
+                        <div>
+                            <label for="">Mobile Number :</label>
+                            <input type="text" name="mobile" style="color: black" value="{{$doct->mobile}}">
+                        </div>
+                        <br>
+                        
+                        <div >
+                            <label for="">Room No :</label>
+                            <input type="number" name="room" style="color: black" value="{{$doct->room}}">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Speciality :</label>
+                            <input type="text" name="speciality" style="color: black" value="{{$doct->speciality}}">
+                            
+                        </div>
+                        <br>
+                        <div>
+                            <label for="">Image :</label>
+                            <img height="100" width="100" src="{{Storage::url($doct->image)}}" >
+                        </div>
+                        <br>
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
+    
+                    </form>
+                </div>
 
-                @foreach($data as $datas)
-                <tr >
-                    <td style="padding: 15px;">{{$datas->name}}</td>
-                    <td style="padding: 15px;">{{$datas->email}}</td>
-                    <td style="padding: 15px;">{{$datas->mobile}}</td>
-                    <td style="padding: 15px;">{{$datas->doctor}}</td>
-                    <td style="padding: 15px;">{{$datas->date}}</td>
-                    <td style="padding: 15px;">{{$datas->message}}</td>
-                    <td style="padding: 15px;">{{$datas->status}}</td>
+                </div>
+             </div>
 
-                    <td class="btn btn-success" style="padding: 15px"> 
-                    <a href="{{route('approved',$datas->id)}}">Approve</a>
-                    </td>
-
-                    <td style="padding: 15px"> 
-                    <a href="{{route('canceled',$datas->id)}}">Cancel</a>
-                    </td>
-                </tr>
-                @endforeach
-
-            </table>
         </div>
-
-
-
-         </div>
-    </div>
-
-
-</div>
 
 
 

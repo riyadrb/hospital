@@ -103,7 +103,6 @@
             <span class="nav-link">Navigation</span>
           </li>
           
-          
           <!-- <li class="nav-item menu-items">
             <a class="nav-link" href="{{route('add_doctor')}}">
               <span class="menu-icon">
@@ -112,8 +111,6 @@
               <span class="menu-title">Add Doctor</span>
             </a>
           </li> -->
-
-
         </ul>
       </nav>
       <!-- partial -->
@@ -285,53 +282,55 @@
 
 
              <!-- @include('admin.doctors') -->
-    <div class="container-fluid page-body-wrapper">
-        <div class="mt-5 pt-5">
-            
-        <div style>
-            <table>
-                <tr style="background-color: white; color:black">
-                    <th style="padding: 10px;">Name </th>
-                    <th style="padding: 10px;">Email </th>
-                    <th style="padding: 10px;">Mobile </th>
-                    <th style="padding: 10px;">Doctor-Name</th>
-                    <th style="padding: 10px;">Date </th>
-                    <th style="padding: 10px;">Message </th>
-                    <th style="padding: 10px;">Status </th>
-                    <th style="padding: 10px;">Approve </th>
-                    <th style="padding: 10px;">Cancel </th>
-                </tr>
 
-                @foreach($data as $datas)
-                <tr >
-                    <td style="padding: 15px;">{{$datas->name}}</td>
-                    <td style="padding: 15px;">{{$datas->email}}</td>
-                    <td style="padding: 15px;">{{$datas->mobile}}</td>
-                    <td style="padding: 15px;">{{$datas->doctor}}</td>
-                    <td style="padding: 15px;">{{$datas->date}}</td>
-                    <td style="padding: 15px;">{{$datas->message}}</td>
-                    <td style="padding: 15px;">{{$datas->status}}</td>
+             <div class="container-fluid page-body-wrapper">
+                <div class="mt-5 pt-5">
 
-                    <td class="btn btn-success" style="padding: 15px"> 
-                    <a href="{{route('approved',$datas->id)}}">Approve</a>
-                    </td>
+                <div>
+                    <table>
 
-                    <td style="padding: 15px"> 
-                    <a href="{{route('canceled',$datas->id)}}">Cancel</a>
-                    </td>
-                </tr>
-                @endforeach
+                        <tbody>
+                        <tr style="background-color: yellow; color:black">
+                            <th style="padding: 10px;">Doctor's Name</th>
+                            <th style="padding: 10px;">Phone Number</th>
+                            <th style="padding: 10px;">Room No</th>
+                            <th style="padding: 10px;">Speciality</th>
+                            <th style="padding: 10px;">Image</th>
+                            <th style="padding: 10px;">Delete</th>
+                            <th style="padding: 10px;">Update<th>
+                        </tr>
+                        </tbody>
+                        
 
-            </table>
+                        <tbody>
+                        @foreach($doctor as $doctors)
+                        <tr>
+                            <td style="padding: 10px;">{{$doctors->name}}</td>
+                            <td style="padding: 10px;">{{$doctors->mobile}}</td>
+                            <td style="padding: 10px;">{{$doctors->room}}</td>
+                            <td style="padding: 10px;">{{$doctors->speciality}}</td>
+
+                            <td style="padding: 10px;">
+                                <img style="height: 100px; width:100px" src="{{Storage::url($doctors->image)}}">
+                            </td>
+                            <td style="padding: 10px;"> <a href="{{route('del_doctor',$doctors->id)}}"> Delete</a> </td>
+                            <td style="padding: 10px;"> <a href="{{route('edit',$doctors->id)}}"> Update </a> </td>
+
+
+                        </tr>
+                        @endforeach
+
+                        </tbody>
+                        
+
+                    </table>
+                </div>
+
+
+                </div>
+            </div>
+
         </div>
-
-
-
-         </div>
-    </div>
-
-
-</div>
 
 
 

@@ -20,7 +20,7 @@ class HomeController extends Controller
                 return redirect()->route('index');
             }
             else
-            {
+          {
                 return view('admin.home');
             }
         }   
@@ -55,7 +55,7 @@ class HomeController extends Controller
             'number'=>$request->number,
             'message'=>$request->message,
             'status'=>'In Progress',
-            'user_id'=>Auth::user()?Auth::user()->id:null
+            'user_id'=>Auth::user()?Auth::user()->id:null  // Ternary operator
         ]);
         return redirect()->back()->with('message','Appointment request has been received');
     }

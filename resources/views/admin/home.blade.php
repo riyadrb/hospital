@@ -124,6 +124,15 @@
             </a>
           </li>
 
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{{route('show_doctor')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">All Doctors</span>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- partial -->
