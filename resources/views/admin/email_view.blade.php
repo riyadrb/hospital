@@ -3,6 +3,8 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+
+    <base href="/public">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Corona Admin</title>
@@ -103,17 +105,14 @@
             <span class="nav-link">Navigation</span>
           </li>
           
-          
-          <!-- <li class="nav-item menu-items">
+          <li class="nav-item menu-items">
             <a class="nav-link" href="{{route('add_doctor')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
               <span class="menu-title">Add Doctor</span>
             </a>
-          </li> -->
-
-
+          </li>
         </ul>
       </nav>
       <!-- partial -->
@@ -284,59 +283,9 @@
              <!-- content starts here  -->
 
 
-             <!-- @include('admin.doctors') -->
-    <div class="container-fluid page-body-wrapper">
-        <div class="mt-5 pt-5">
-            
-        <div style>
-            <table>
-                <tr style="background-color: white; color:black">
-                    <th style="padding: 10px;">Name </th>
-                    <th style="padding: 10px;">Email </th>
-                    <th style="padding: 10px;">Mobile No </th>
-                    <th style="padding: 10px;">Doctor-Name</th>
-                    <th style="padding: 10px;">Date </th>
-                    <th style="padding: 10px;">Message </th>
-                    <th style="padding: 10px;">Status </th>
-                    <th style="padding: 10px;">Approve </th>
-                    <th style="padding: 10px;">Cancel </th>
-                    <th style="padding: 10px;">Send Email </th>
-                </tr>
+             @include('admin.doctors')
 
-                @foreach($data as $datas)
-                <tr >
-                    <td style="padding: 15px;">{{$datas->name}}</td>
-                    <td style="padding: 15px;">{{$datas->email}}</td>
-                    <td style="padding: 15px;">{{$datas->mobile}}</td>
-                    <td style="padding: 15px;">{{$datas->doctor}}</td>
-                    <td style="padding: 15px;">{{$datas->date}}</td>
-                    <td style="padding: 15px;">{{$datas->message}}</td>
-                    <td style="padding: 15px;">{{$datas->status}}</td>
-
-                    <td class="btn btn-success" style="padding: 10px"> 
-                    <a href="{{route('approved',$datas->id)}}">Approve</a>
-                    </td>
-
-                    <td  style="padding: 10px"> 
-                    <a href="{{route('canceled',$datas->id)}}">Cancel</a>
-                    </td>
-
-                    <td  style="padding: 10px"> 
-                      <a href="{{route('email',$datas->id)}}">Email</a>
-                      </td>
-                </tr>
-                @endforeach
-
-            </table>
         </div>
-
-
-
-         </div>
-    </div>
-
-
-</div>
 
 
 

@@ -53,7 +53,7 @@
                     
                     <div>
                         <label for="">Mobile Number :</label>
-                        <input type="number" name="number" style="color: black" value="">
+                        <input type="number" name="mobile" style="color: black" value="">
                     </div>
                     <br>
                     

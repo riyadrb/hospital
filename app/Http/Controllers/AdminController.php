@@ -105,4 +105,9 @@ class AdminController extends Controller
         return redirect()->route('show_doctor');
     }
 
+    public function email($id)
+    {
+        return view('admin.email_view');
+    }
+
 }
