@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TestMail;
 use App\Models\Appoinment;
 use App\Models\Doctor;
+use App\Notifications\MyNotification;
 use Illuminate\Http\Request;
+// use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 
 class AdminController extends Controller
 {
@@ -106,8 +111,32 @@ class AdminController extends Controller
     }
 
     public function email($id)
+
     {
-        return view('admin.email_view');
+        $data=Appoinment::find($id);
+        return view('admin.email_view',compact('data'));
     }
+    
+
+    public function sendmail(Request $request,$id)
+    {
+        $data=Appoinment::find($id);
+        $details=[
+            'greeting'=>$request->greeting,
+            'body'=>$request->body,
+            'actiontext'=>$request->actiontext,
+            'actionurl'=>$request->actionurl,
+            'endpart'=>$request->endpart
+        ];
+        Notification::send($data,new MyNotification($details));
+
+        return redirect()->back();
+    }
+
+
+
+        // Mail::to('shuvodewan.sky@gmail.com')->send(new TestMail("hello shuvo"));
+
+
 
 }

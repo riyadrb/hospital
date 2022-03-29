@@ -3,6 +3,13 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+    <style type="text/css">
+      label
+        {
+            display: inline-block;
+            width: 100px;
+        }
+    </style> 
 
     <base href="/public">
     <meta charset="utf-8">
@@ -283,7 +290,81 @@
              <!-- content starts here  -->
 
 
-             @include('admin.doctors')
+             
+
+
+    <div class="container-fluid page-body-wrapper">
+         <div class="mt-5 pt-5">
+
+         @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+                </ul>
+            </div>
+        @endif
+
+
+
+            <div class="container">
+                
+            @if(session()->has('message'))
+
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismis="alert">
+                    x
+                </button>
+            {{session()->get('message')}}
+            </div>
+
+            @endif
+
+
+                <form action="{{route('sendmail',$data->id)}}" method="POST">
+                    @csrf
+
+                    <div>
+                        <label>Greeting :</label>
+                        <input type="text" name="greeting" style="color: black" value="">
+                    </div>
+                    <br>
+                    
+                    <div>
+                        <label for="">Body:</label>
+                        <input type="text" name="body" style="color: black" value="">
+                    </div>
+                    <br>
+                    
+                    <div >
+                        <label for="">Action Text:</label>
+                        <input type="text" name="actiontext" style="color: black" value="">
+                    </div>
+                    <br>
+
+                    <div >
+                      <label for="">Action URL:</label>
+                      <input type="text" name="actionurl" style="color: black" value="">
+                  </div>
+                  <br>
+
+                  <div >
+                    <label for="">End Part:</label>
+                    <input type="text" name="endpart" style="color: black" value="">
+                </div>
+          
+                    
+                    <br>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                </form>
+            </div>
+         </div>
+    </div>
+    
+
 
         </div>
 

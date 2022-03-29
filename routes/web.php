@@ -23,6 +23,8 @@ Route::get('/del_doctor/{id}',[AdminController::class,'del_doctor'])->name('del_
 Route::get('/edit/{id}',[AdminController::class,'edit'])->name('edit');
 Route::post('/update/{id}',[AdminController::class,'update'])->name('update');
 Route::get('/email/{id}',[AdminController::class,'email'])->name('email');
+Route::post('/sendmail/{id}',[AdminController::class,'sendmail'])->name('sendmail');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
